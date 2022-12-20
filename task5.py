@@ -1,5 +1,36 @@
 # Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
-
 # Пример:
+# - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
 
-# - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
+print('Введите  число k')
+a = int(input())
+print()
+
+def Fibonacci1(n):
+    if n in [1, 2]:
+        return 1
+    else:
+        return Fibonacci1(n-1) + Fibonacci1(n-2)
+
+list1 = [0]
+for i in range(1, a + 1):
+    list1.append(Fibonacci1(i))
+
+
+
+def Fibonacci2(n):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return -1
+    else:
+        num1, num2 = 1, -1
+        for i in range(2, n):
+            num1, num2 = num2, num1 - num2
+        return num2
+
+list = []
+for j in range(1, a + 1):
+    list.insert(0, Fibonacci2(j))
+    
+print('Список чисел Фибоначчи для k=' ,a, 'будет иметь вид:','\n',(list+list1))
